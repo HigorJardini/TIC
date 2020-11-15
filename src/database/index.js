@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 
+const User = require('../app/models/User')
+
 const config = require('../config/database');
 
 const models = [
@@ -15,7 +17,7 @@ class Database {
         this.connection = new Sequelize(config);
 
         models.forEach(function(model) {
-          module.exports[model] = sequelize.import(__dirname + '/' + model);
+          module.exports[model] = Sequelize.import(__dirname + '/' + model);
         });
     }
 }
